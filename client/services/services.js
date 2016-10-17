@@ -13,8 +13,21 @@ angular.module('rex.services', [])
     });
   };
 
+  var retrieveCrosswalk = function(id) {
+    console.log('calling retrieve crosswalk services.js');
+    return $http({
+      method: 'GET',
+      url: '/api/crosswalk',
+      params: {id: id}
+    })
+    .then(function(res) {
+      return res.data;
+    });
+  };
+
   return {
-    findInstances: findInstances
+    findInstances: findInstances,
+    retrieveCrosswalk: retrieveCrosswalk
   };
 
 });

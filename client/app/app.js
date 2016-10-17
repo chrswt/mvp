@@ -4,6 +4,7 @@ angular.module('rex', [
 
 .controller('searchController', function($scope, Search) {
   $scope.candidates = [];
+  $scope.result = [];
 
   $scope.findInstances = function(query) {
     Search.findInstances(query)
@@ -13,12 +14,21 @@ angular.module('rex', [
       console.log('candidates: ', $scope.candidates);
     });
   };
+
+  $scope.searchCrosswalk = function(id) {
+    Search.retrieveCrosswalk(id)
+    .then(function(res) {
+      console.log('receiving response in app.js: ', res);
+      $scope.result.push(res);
+      console.log('results: ', $scope.result);
+    })
+  }
 })
 
 .directive('ngSearchResults', function() {
   return {
     template:  
-      '<div>Name: {{candidate.name}}</div>' +
+      '<div ng-click="searchCrosswalk(candidate.factual_id)">Name: {{candidate.name}}</div>' +
       '<div>Factual ID: {{candidate.factual_id}}</div>' +
       '<div>Address: {{candidate.address}}</div>' +
       '<div>Location: {{candidate.locality}}</div>' +
@@ -26,4 +36,4 @@ angular.module('rex', [
         '<div ng-repeat="neighborhood in candidate.neighborhood">{{neighborhood}}</div>' +
       '</div>'
   };
-);
+});

@@ -22,7 +22,7 @@ exports.findPlace = function(req, res) {
 exports.searchCrosswalk = function(req, res) {
   var id = req.query.id || req.headers.id;
   console.log('factual id: ', id);
-  factual.get('/t/crosswalk?filters={"factual_id":"' + id + '"}', function(err, result) {
+  factual.get('/t/crosswalk?filters={"factual_id":"' + id + '"}&limit=50', function(err, result) {
     res.send(result);
   });
 };
