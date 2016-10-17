@@ -9,6 +9,7 @@ exports.scrape = function(req, res) {
   urls.forEach(function(url, i) {
 
     if (url.includes('yelp')) {
+      console.log('scraping yelp');
       yelpScrape(url, function(rating) {
         if (!ratings.yelp) {
           ratings.yelp = rating;
@@ -29,25 +30,24 @@ exports.scrape = function(req, res) {
         }
       });
     } else if (url.includes('tripadvisor')) {
-      if (i === urls.length - 1) {
-        res.send(ratings);
-      }
+      console.log('scraping tripA');
+      tripadvisorScrape(url, function(rating) {
+        if (!ratings.tripadvisor) {
+          ratings.tripadvisor = rating;
+          console.log(ratings);
+          if (i === urls.length - 1) {
+            res.send(ratings);
+          }
+        }
+      });
     } else if (url.includes('facebook')) {
-      if (i === urls.length - 1) {
-        res.send(ratings);
-      }
+
     } else if (url.includes('urbanspoon')) {
-      if (i === urls.length - 1) {
-        res.send(ratings);
-      }
+
     } else if (url.includes('zagat')) {
-      if (i === urls.length - 1) {
-        res.send(ratings);
-      }
+
     } else if (url.includes('gogobot')) {
-      if (i === urls.length - 1) {
-        res.send(ratings);
-      }
+
     }
   });
 };
@@ -70,6 +70,91 @@ var yelpScrape = function(url, callback) {
 };
 
 var foursquareScrape = function(url, callback) {
+  var rating;
+
+  request(url, function(err, resp, html) {
+    if (!err) {
+      var $ = cheerio.load(html);
+
+      if (!rating) {
+        rating = $('.venueScore').attr('title');
+        if (rating) {
+          callback(rating);
+        }
+      }
+    }
+  });
+};
+
+var tripadvisorScrape = function(url, callback) {
+  var rating;
+
+  request(url, function(err, resp, html) {
+    if (!err) {
+      var $ = cheerio.load(html);
+
+      if (!rating) {
+        rating = $('.sprite-rating_rr_fill').attr('alt');
+        if (rating) {
+          callback(rating);
+        }
+      }
+    }
+  });
+};
+
+var facebookScrape = function(url, callback) {
+  var rating;
+
+  request(url, function(err, resp, html) {
+    if (!err) {
+      var $ = cheerio.load(html);
+
+      if (!rating) {
+        rating = $('.venueScore').attr('title');
+        if (rating) {
+          callback(rating);
+        }
+      }
+    }
+  });
+};
+
+var urbanspoonScrape = function(url, callback) {
+  var rating;
+
+  request(url, function(err, resp, html) {
+    if (!err) {
+      var $ = cheerio.load(html);
+
+      if (!rating) {
+        rating = $('.venueScore').attr('title');
+        if (rating) {
+          callback(rating);
+        }
+      }
+    }
+  });
+};
+
+var zagatScrape = function(url, callback) {
+  var rating;
+
+  request(url, function(err, resp, html) {
+    if (!err) {
+      var $ = cheerio.load(html);
+
+      if (!rating) {
+        rating = $('.venueScore').attr('title');
+        if (rating) {
+          callback(rating);
+        }
+      }
+    }
+  });
+};
+
+var gogobotScrape = function(url, callback) {
   var rating;
 
   request(url, function(err, resp, html) {
