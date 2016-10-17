@@ -5,6 +5,7 @@ angular.module('rex', [
 .controller('searchController', function($scope, Search) {
   $scope.candidates = [];
   $scope.places = [];
+  $scope.candidateName;
   $scope.candidateGeneration = true;
   $scope.candidateView = false;
 
@@ -19,10 +20,11 @@ angular.module('rex', [
     });
   };
 
-  $scope.searchCrosswalk = function(id) {
+  $scope.searchCrosswalk = function(id, name) {
     $scope.candidateGeneration = false;
     $scope.candidateView = true;
 
+    $scope.candidateName = name;
     var results = [];
     var current;
     var urlsToScrape = [];
@@ -53,13 +55,12 @@ angular.module('rex', [
         $scope.places = {
           loading: 'We are processing your request'
         }
+        Search.scrapeAll(urlsToScrape)
+        .then(function(result) {
+          console.log('ratings object: ', result);
+          $scope.places = result;
+        });
       }
-          
-      Search.scrapeAll(urlsToScrape)
-      .then(function(result) {
-        console.log('ratings object: ', result);
-        $scope.places = result;
-      });
     });
   };
 })
@@ -67,7 +68,7 @@ angular.module('rex', [
 .directive('ngSearchResults', function() {
   return {
     template:  
-      '<div ng-click="searchCrosswalk(candidate.factual_id)">Name: {{candidate.name}}</div>' +
+      '<div ng-click="searchCrosswalk(candidate.factual_id, candidate.name)">Name: {{candidate.name}}</div>' +
       '<div>Factual ID: {{candidate.factual_id}}</div>' +
       '<div>Address: {{candidate.address}}</div>' +
       '<div>Location: {{candidate.locality}}</div>' +
@@ -80,7 +81,7 @@ angular.module('rex', [
 .directive('ngCrosswalkResults', function() {
   return {
     template:
-      '<div>Results!</div>' +
+      '<div>{{$parent.candidateName}}</div>' +
       '<div>{{key}}</div>' +
       '<div>{{value}}</div>'
   };
