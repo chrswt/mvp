@@ -21,6 +21,9 @@ angular.module('rex', [
       '<div>Name: {{candidate.name}}</div>' +
       '<div>Factual ID: {{candidate.factual_id}}</div>' +
       '<div>Address: {{candidate.address}}</div>' +
-      '<div>Location: {{candidate.locality}}</div>'
+      '<div>Location: {{candidate.locality}}</div>' +
+      '<div>Neighborhoods:' +
+        '<div ng-repeat="neighborhood in candidate.neighborhood">{{neighborhood}}</div>' +
+      '</div>'
   };
 });
