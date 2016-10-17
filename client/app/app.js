@@ -4,25 +4,38 @@ angular.module('rex', [
 
 .controller('searchController', function($scope, Search) {
   $scope.candidates = [];
-  $scope.result = [];
+  $scope.places = [];
 
   $scope.findInstances = function(query) {
     Search.findInstances(query)
     .then(function(res) {
-      console.log('receiving response in app.js: ', res);
       $scope.candidates.push(res);
       console.log('candidates: ', $scope.candidates);
     });
   };
 
   $scope.searchCrosswalk = function(id) {
+    var results = [];
+    var current;
+    var urlsToScrape = [];
     Search.retrieveCrosswalk(id)
     .then(function(res) {
-      console.log('receiving response in app.js: ', res);
-      $scope.result.push(res);
-      console.log('results: ', $scope.result);
-    })
-  }
+      results.push(res);
+      current = results[results.length - 1];
+      current.data.forEach(function(xwalk) {
+        if (xwalk.namespace === 'zagat' ||
+          xwalk.namespace === 'gogobot' ||
+          xwalk.namespace === 'yelp' ||
+          xwalk.namespace === 'tripadvisor' ||
+          xwalk.namespace === 'urbanspoon' ||
+          xwalk.namespace === 'facebook' ||
+          xwalk.namespace === 'foursquare') {
+          urlsToScrape.push(xwalk.url);
+        }
+      });
+      console.log(urlsToScrape);
+    });
+  };
 })
 
 .directive('ngSearchResults', function() {
