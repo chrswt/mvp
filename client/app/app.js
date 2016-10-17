@@ -84,7 +84,7 @@ angular.module('rex', [
   return {
     template:
       '<div class="results-container">' +
-        '<div>{{$parent.candidateName}}</div>' +
+        '<div ng-if="$index === 0">{{$parent.candidateName}}</div>' +
         '<div>{{key}}</div>' +
         '<div>{{value}}</div>' +
       '</div>'
