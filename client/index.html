@@ -17,12 +17,12 @@
     <h1 class="title">rex</h1>
     
 
-    <div class = "col-6" ng-app="rex" ng-controller="searchController">
+    <div class ="col-6" ng-app="rex" ng-controller="searchController">
       <form ng-submit="findInstances(searchField)">
         <input type="text" class="search" ng-model="searchField" placeholder="Search for your favorite restaurants/hotels/businesses..." />
-        <button>Search</button>
+        <button class="btn btn-primary btn-lg outline">Search</button>
       </form>
-      <ng-search-results ng-repeat="candidate in candidates[0]"></ng-search-results>
+      <ng-search-results ng-repeat="candidate in candidates[candidates.length -1]" class="candidates-container"></ng-search-results>
     </div>
 
   </body>
