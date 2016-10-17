@@ -1,0 +1,26 @@
+{
+  "name": "rex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrswt/2016-09-mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrswt/2016-09-mvp/issues"
+  },
+  "homepage": "https://github.com/chrswt/2016-09-mvp#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "cheerio": "^0.22.0",
+    "express": "^4.14.0",
+    "factual-api": "^1.0.7",
+    "mysql": "^2.11.1"
+  }
+}
