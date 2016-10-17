@@ -20,7 +20,9 @@
         <input type="text" class="search" ng-model="searchField" placeholder="Search for your favorite restaurants/hotels/businesses..." />
         <button>Search</button>
       </form>
+      <ng-search-results ng-repeat="candidate in candidates[0]"></ng-search-results>
     </div>
+
   </body>
 
 </html>

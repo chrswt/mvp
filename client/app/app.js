@@ -11,6 +11,16 @@ angular.module('rex', [
       console.log('receiving response in app.js: ', res);
       $scope.candidates.push(res);
       console.log('candidates: ', $scope.candidates);
-    })
+    });
+  };
+})
+
+.directive('ngSearchResults', function() {
+  return {
+    template:  
+      '<div>Name: {{candidate.name}}</div>' +
+      '<div>Factual ID: {{candidate.factual_id}}</div>' +
+      '<div>Address: {{candidate.address}}</div>' +
+      '<div>Location: {{candidate.locality}}</div>'
   };
 });
