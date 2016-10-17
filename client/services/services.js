@@ -14,7 +14,6 @@ angular.module('rex.services', [])
   };
 
   var retrieveCrosswalk = function(id) {
-    console.log('calling retrieve crosswalk services.js');
     return $http({
       method: 'GET',
       url: '/api/crosswalk',

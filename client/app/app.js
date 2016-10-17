@@ -18,6 +18,7 @@ angular.module('rex', [
     var results = [];
     var current;
     var urlsToScrape = [];
+
     Search.retrieveCrosswalk(id)
     .then(function(res) {
       results.push(res);
@@ -35,11 +36,15 @@ angular.module('rex', [
         }
       });
       
-      Search.scrapeAll(urlsToScrape)
-      .then(function(result) {
-        console.log(result);
-      });
-      // for each url, pass through scraper and find function
+      console.log('urls to scrape: ', urlsToScrape);
+      if (urlsToScrape.length < 1) {
+        console.log('no results found');
+      } else {
+        Search.scrapeAll(urlsToScrape)
+        .then(function(result) {
+          console.log('ratings object: ', result);
+        });
+      }
     });
   };
 })
