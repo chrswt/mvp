@@ -5,11 +5,20 @@
     <title>rex</title>
 
     <link rel="stylesheet" href="styles/main.css">
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="app/app.js"></script>
   </head>
 
   <body>
     <h1 class="title">rex</h1>
-
+    
+    <div ng-app="rex" ng-controller="searchController">
+      <form ng-submit="">
+        <input type="text">
+        <button>Search</button>
+      </form>
+    </div>
   </body>
 
 </html>

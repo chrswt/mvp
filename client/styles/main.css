@@ -11,6 +11,7 @@ body {
 }
 
 .title {
+  font-family: 'Times New Roman';
   color: white;
   letter-spacing: 3px;
   font-size: 72px;
