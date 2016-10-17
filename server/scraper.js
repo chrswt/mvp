@@ -9,7 +9,6 @@ exports.scrape = function(req, res) {
   urls.forEach(function(url, i) {
 
     if (url.includes('yelp')) {
-      console.log('scraping yelp');
       yelpScrape(url, function(rating) {
         if (!ratings.yelp) {
           ratings.yelp = rating;
@@ -30,7 +29,6 @@ exports.scrape = function(req, res) {
         }
       });
     } else if (url.includes('tripadvisor')) {
-      console.log('scraping tripA');
       tripadvisorScrape(url, function(rating) {
         if (!ratings.tripadvisor) {
           ratings.tripadvisor = rating;
@@ -40,10 +38,16 @@ exports.scrape = function(req, res) {
           }
         }
       });
-    } else if (url.includes('facebook')) {
-
     } else if (url.includes('urbanspoon')) {
-
+      urbanspoonScrape(url, function(rating) {
+        if (!ratings.urbanspoon) {
+          ratings.urbanspoon = rating;
+          console.log(ratings);
+          if (i === urls.length - 1) {
+            res.send(ratings);
+          }
+        }
+      });
     } else if (url.includes('zagat')) {
 
     } else if (url.includes('gogobot')) {
@@ -103,23 +107,6 @@ var tripadvisorScrape = function(url, callback) {
   });
 };
 
-var facebookScrape = function(url, callback) {
-  var rating;
-
-  request(url, function(err, resp, html) {
-    if (!err) {
-      var $ = cheerio.load(html);
-
-      if (!rating) {
-        rating = $('.venueScore').attr('title');
-        if (rating) {
-          callback(rating);
-        }
-      }
-    }
-  });
-};
-
 var urbanspoonScrape = function(url, callback) {
   var rating;
 
@@ -128,7 +115,9 @@ var urbanspoonScrape = function(url, callback) {
       var $ = cheerio.load(html);
 
       if (!rating) {
-        rating = $('.venueScore').attr('title');
+        rating = $('.rating-div').text()
+        .replace(/\s+/g, '')
+        .replace(/\n/g, ',');
         if (rating) {
           callback(rating);
         }
