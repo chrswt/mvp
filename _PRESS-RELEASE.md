@@ -17,28 +17,29 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > rex
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > A recommender system for the plethora of recommender systems. 
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Search for your favorite restaurants, hotels, or businesses. Retrieve all the ratings from the various crowdsourced recommendation sites (such as Yelp, Foursquare, TripAdvisor, etc.) within seconds. Find out which review site has a community that is best tailored to your tastes! 
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > There are currently too many recommendation sites, and choosing between them is often an arbitrary crapshoot. Certain communities may tend to gather or develop within a certain site, which may skew the aggregated ratings.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > This web app attempts to solve the solution in two ways. (1) Retrieving all the ratings from all the recommendation sites so that the user has an awareness of a greater range of experiences, and (2) Attempt to match the user to a recommendation site that best matches her tastes by soliciting her recommendation on various businesses that she has searched for.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > Find a recommendation site best tailored to you.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Start by using our search bar and searching for a business of your choice to get started!
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > I have been using Yelp because of its popularity but little did I know that Foursquare actually best represented my tastes. I now have better recommendations for my friends when we go out for meals.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Give our site a try at (insert URL here)!
+
