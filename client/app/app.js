@@ -45,15 +45,21 @@ angular.module('rex', [
       });
       
       console.log('urls to scrape: ', urlsToScrape);
-      if (urlsToScrape.length < 1) {
-        console.log('no results found');
-      } else {
-        Search.scrapeAll(urlsToScrape)
-        .then(function(result) {
-          console.log('ratings object: ', result);
-          $scope.places = result;
-        });
+      if (urlsToScrape.length <= 1) {
+        $scope.places = {
+          error: 'We could not find any review sites for this business!'
+        }
+      } else { // TODO generate loading gif
+        $scope.places = {
+          loading: 'We are processing your request'
+        }
       }
+          
+      Search.scrapeAll(urlsToScrape)
+      .then(function(result) {
+        console.log('ratings object: ', result);
+        $scope.places = result;
+      });
     });
   };
 })

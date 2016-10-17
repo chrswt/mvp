@@ -27,8 +27,3 @@ exports.searchCrosswalk = function(req, res) {
   });
 };
 
-/* factual.get('http://api.v3.factual.com/t/crosswalk-us?q=the container store', function (err, res) {
-  if (err) { console.log(err); }
-  console.log(res.data);
-});
-*/

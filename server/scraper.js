@@ -6,21 +6,17 @@ exports.scrape = function(req, res) {
   
   var ratings = {};
   
-  if (urls.length === 1) {
-    console.log('length of 1 throws error, handle case later');
-  } else {
-    urls.forEach(function(url) {
+  urls.forEach(function(url) {
 
-      if (url.includes('yelp')) {
-        yelpScrape(url, function(rating) {
-          if (!ratings.yelp) {
-            ratings.yelp = rating;
-            res.send(ratings); // TODO move to lowest rating call
-          }
-        });
-      }
-    });
-  }
+    if (url.includes('yelp')) {
+      yelpScrape(url, function(rating) {
+        if (!ratings.yelp) {
+          ratings.yelp = rating;
+          res.send(ratings); // TODO move to lowest rating call
+        }
+      });
+    }
+  });
 };
   
 
