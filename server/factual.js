@@ -5,15 +5,25 @@ var factual = new Factual('lE8FYusPO5Fc16F6XMOqpDFZFkLYpSPLBrMbqZBT',
 exports.findPlace = function(req, res) {
   var place = req.query.place;
   var region = req.query.region || 'CA';
+  var locality = req.query.locality || 'San Francisco';
 
   console.log(req);
   factual.get('/t/places-us', {
     q: place,
     filters: {
-      region: region
+      region: region,
+      locality: locality
     },
   }, function(err, result) {
     res.send(result.data);
+  });
+};
+
+exports.searchCrosswalk = function(req, res) {
+  var id = req.query.id || req.headers.id;
+  console.log('factual id: ', id);
+  factual.get('/t/crosswalk?filters={"factual_id":"' + id + '"}', function(err, result) {
+    res.send(result);
   });
 };
 

@@ -26,4 +26,4 @@ angular.module('rex', [
         '<div ng-repeat="neighborhood in candidate.neighborhood">{{neighborhood}}</div>' +
       '</div>'
   };
-});
+);
