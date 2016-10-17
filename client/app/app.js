@@ -5,8 +5,13 @@ angular.module('rex', [
 .controller('searchController', function($scope, Search) {
   $scope.candidates = [];
   $scope.places = [];
+  $scope.candidateGeneration = true;
+  $scope.candidateView = false;
 
   $scope.findInstances = function(query) {
+    $scope.candidateGeneration = true;
+    $scope.candidateView = false;
+
     Search.findInstances(query)
     .then(function(res) {
       $scope.candidates.push(res);
@@ -15,6 +20,9 @@ angular.module('rex', [
   };
 
   $scope.searchCrosswalk = function(id) {
+    $scope.candidateGeneration = false;
+    $scope.candidateView = true;
+
     var results = [];
     var current;
     var urlsToScrape = [];
@@ -43,6 +51,7 @@ angular.module('rex', [
         Search.scrapeAll(urlsToScrape)
         .then(function(result) {
           console.log('ratings object: ', result);
+          $scope.places = result;
         });
       }
     });
@@ -59,5 +68,14 @@ angular.module('rex', [
       '<div>Neighborhoods:' +
         '<div ng-repeat="neighborhood in candidate.neighborhood">{{neighborhood}}</div>' +
       '</div>'
+  };
+})
+
+.directive('ngCrosswalkResults', function() {
+  return {
+    template:
+      '<div>Results!</div>' +
+      '<div>{{key}}</div>' +
+      '<div>{{value}}</div>'
   };
 });

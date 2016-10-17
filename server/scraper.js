@@ -33,7 +33,9 @@ var yelpScrape = function(url, callback) {
       
       if (!rating) {
         rating = $('.star-img').attr('title');
-        callback(rating); 
+        if (rating) { // Handles first rating = undefined edge cases
+          callback(rating); 
+        }
       }
     }
   });
