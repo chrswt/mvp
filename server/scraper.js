@@ -6,19 +6,51 @@ exports.scrape = function(req, res) {
   
   var ratings = {};
   
-  urls.forEach(function(url) {
+  urls.forEach(function(url, i) {
 
     if (url.includes('yelp')) {
       yelpScrape(url, function(rating) {
         if (!ratings.yelp) {
           ratings.yelp = rating;
-          res.send(ratings); // TODO move to lowest rating call
+          console.log(ratings);
+          if (i === urls.length - 1) {
+            res.send(ratings);
+          }
         }
       });
+    } else if (url.includes('foursquare')) {
+      foursquareScrape(url, function(rating) {
+        if (!ratings.foursquare) {
+          ratings.foursquare = rating;
+          console.log(ratings);
+          if (i === urls.length - 1) {
+            res.send(ratings);
+          }
+        }
+      });
+    } else if (url.includes('tripadvisor')) {
+      if (i === urls.length - 1) {
+        res.send(ratings);
+      }
+    } else if (url.includes('facebook')) {
+      if (i === urls.length - 1) {
+        res.send(ratings);
+      }
+    } else if (url.includes('urbanspoon')) {
+      if (i === urls.length - 1) {
+        res.send(ratings);
+      }
+    } else if (url.includes('zagat')) {
+      if (i === urls.length - 1) {
+        res.send(ratings);
+      }
+    } else if (url.includes('gogobot')) {
+      if (i === urls.length - 1) {
+        res.send(ratings);
+      }
     }
   });
 };
-  
 
 var yelpScrape = function(url, callback) {
   var rating;
@@ -37,3 +69,19 @@ var yelpScrape = function(url, callback) {
   });
 };
 
+var foursquareScrape = function(url, callback) {
+  var rating;
+
+  request(url, function(err, resp, html) {
+    if (!err) {
+      var $ = cheerio.load(html);
+
+      if (!rating) {
+        rating = $('.venueScore').attr('title');
+        if (rating) {
+          callback(rating);
+        }
+      }
+    }
+  });
+};
