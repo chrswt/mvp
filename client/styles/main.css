@@ -18,3 +18,13 @@ body {
   margin: 0 auto;
   text-align: center;
 }
+
+.col-6 {
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Muli', sans-serif;
+  font-size: 18px;
+}
+
