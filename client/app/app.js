@@ -67,13 +67,15 @@ angular.module('rex', [
 
 .directive('ngSearchResults', function() {
   return {
-    template:  
-      '<div ng-click="searchCrosswalk(candidate.factual_id, candidate.name)">Name: {{candidate.name}}</div>' +
-      '<div>Factual ID: {{candidate.factual_id}}</div>' +
-      '<div>Address: {{candidate.address}}</div>' +
-      '<div>Location: {{candidate.locality}}</div>' +
-      '<div>Neighborhoods:' +
-        '<div ng-repeat="neighborhood in candidate.neighborhood">{{neighborhood}}</div>' +
+    template:
+      '<div class="candidates-container">' +
+        '<div ng-click="searchCrosswalk(candidate.factual_id, candidate.name)">Name: {{candidate.name}}</div>' +
+        '<div>Factual ID: {{candidate.factual_id}}</div>' +
+        '<div>Address: {{candidate.address}}</div>' +
+        '<div>Location: {{candidate.locality}}</div>' +
+        '<div>Neighborhoods:' +
+          '<div ng-repeat="neighborhood in candidate.neighborhood">{{neighborhood}}</div>' +
+        '</div>' + 
       '</div>'
   };
 })
@@ -81,8 +83,10 @@ angular.module('rex', [
 .directive('ngCrosswalkResults', function() {
   return {
     template:
-      '<div>{{$parent.candidateName}}</div>' +
-      '<div>{{key}}</div>' +
-      '<div>{{value}}</div>'
+      '<div class="results-container">' +
+        '<div>{{$parent.candidateName}}</div>' +
+        '<div>{{key}}</div>' +
+        '<div>{{value}}</div>' +
+      '</div>'
   };
 });

@@ -23,9 +23,9 @@
         <button class="btn btn-primary btn-lg outline">Search</button>
       </form>
 
-      <ng-search-results ng-repeat="candidate in candidates[candidates.length -1]" class="candidates-container" ng-show="candidateGeneration"></ng-search-results>
+      <ng-search-results ng-repeat="candidate in candidates[candidates.length -1]" ng-show="candidateGeneration"></ng-search-results>
 
-      <ng-crosswalk-results ng-repeat="(key, value) in places" ng-show="candidateView" class="results-container"></ng-crosswalk-results>
+      <ng-crosswalk-results ng-repeat="(key, value) in places" ng-show="candidateView"></ng-crosswalk-results>
     </div>
 
   </body>
