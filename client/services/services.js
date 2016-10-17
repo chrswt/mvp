@@ -25,9 +25,21 @@ angular.module('rex.services', [])
     });
   };
 
+  var scrapeAll = function(urls) {
+    return $http({
+      method: 'GET',
+      url: 'api/crosswalk/scrape',
+      params: {urls: urls}
+    })
+    .then(function(res) {
+      return res.data;
+    });
+  };
+
   return {
     findInstances: findInstances,
-    retrieveCrosswalk: retrieveCrosswalk
+    retrieveCrosswalk: retrieveCrosswalk,
+    scrapeAll: scrapeAll
   };
 
 });

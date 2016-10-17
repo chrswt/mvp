@@ -22,6 +22,7 @@ angular.module('rex', [
     .then(function(res) {
       results.push(res);
       current = results[results.length - 1];
+
       current.data.forEach(function(xwalk) {
         if (xwalk.namespace === 'zagat' ||
           xwalk.namespace === 'gogobot' ||
@@ -33,7 +34,12 @@ angular.module('rex', [
           urlsToScrape.push(xwalk.url);
         }
       });
-      console.log(urlsToScrape);
+      
+      Search.scrapeAll(urlsToScrape)
+      .then(function(result) {
+        console.log(result);
+      });
+      // for each url, pass through scraper and find function
     });
   };
 })
