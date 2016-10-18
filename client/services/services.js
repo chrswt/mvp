@@ -54,7 +54,22 @@ angular.module('rex.services', [])
       }
     }).then(function(res) {
       return res.data;
-    })
+    });
+  };
+
+  var checkCredentials = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/checkcredentials',
+    }).then(function(res) {
+      console.log('check creds: ', res.data);
+      return res.data;
+    });
+  };
+
+  return {
+    register: register,
+    checkCredentials: checkCredentials
   }
 
 });

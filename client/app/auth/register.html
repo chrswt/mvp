@@ -1,10 +1,10 @@
 <div class="auth-form">
   <h1>Register</h1>
-  <form>
+  <form ng-submit="register(userField, passField)">
     <div>Choose a username:</div>
-    <input type="text" class="username">
+    <input type="text" class="username" ng-model="userField">
     <div>Enter your password:</div>
-    <input type="password" class="password">
+    <input type="password" class="password" ng-model="passField">
     <br/>
     <button class="btn btn-primary btn-lg outline auth-btn">Register</button>
     <a ui-sref="home">

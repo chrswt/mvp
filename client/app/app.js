@@ -72,7 +72,7 @@ angular.module('rex', [
         $scope.places = {
           error: 'We could not find any review sites for this business!'
         }
-      } else { // TODO generate loading gif
+      } else {
         $scope.places = {
           loading: 'We are processing your request'
         }
@@ -87,12 +87,19 @@ angular.module('rex', [
 })
 
 .controller('authController', function($scope, Auth) {
+  $scope.loggedIn = Auth.checkCredentials();
+  console.log($scope.loggedIn);
+
   $scope.register = function(user, pass) {
     Auth.register(user, pass)
     .then(function(res) {
-      console.log('registration done: ', res);
-    })
-  }
+      if (res) {
+        // something
+      } else {
+        alert('This username is taken!');
+      }
+    });
+  };
 })
 
 .directive('ngSearchResults', function() {

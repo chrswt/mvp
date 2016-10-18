@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var stormpath = require('express-stormpath');
+var session = require('express-session');
+var db = require('./db/index');
 
 // API routes configuration
 require('./config/routes.js')(app);
@@ -8,16 +10,31 @@ require('./config/routes.js')(app);
 // Serve static files from client
 app.use(express.static(__dirname + '/../client'));
 
-app.use(stormpath.init(app, {
-  apiKey: {
-    id: '2JDDFP2UKZ4MLPCEYWVT6IWR0',
-    secret: '6d3zldOU3r+ROn8s7cA8AVfqJAFRacdpP0++C2ntXJM'
-  }, application: {
-    href: 'https://api.stormpath.com/v1/applications/4BwxovhG4q1uq5vhtx9ura'
-  }, expand: {
-    customData: true
-  }
+app.use(session({
+  secret: 'hackreactor1',
+  saveUninitialized: true,
+  resave: false
 }));
+
+app.post('/api/register', function(req, res) {
+  db.createUser(req, function(done) {
+    if (done) {
+      req.session.user = req.query.username;
+      console.log('requser: ', req.session.user);
+    }
+    res.send(done);
+  });
+});
+
+app.get('/api/checkcredentials', function(req, res) {
+  if (req.session.user) {
+    console.log('checking req.session.user: ', req.session.user)
+    res.send(req.session.user);
+  } else {
+    res.send(false);
+  }
+})
 
 app.listen(3000);
 
+module.exports = app;
