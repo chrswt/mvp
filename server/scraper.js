@@ -3,67 +3,61 @@ var cheerio = require('cheerio');
 
 exports.scrape = function(req, res) {
   var urls = req.query.urls || req.headers.urls;
-  
+  var count = 0;
+  var reqCount = urls.length - 1;
   var ratings = {};
   
   urls.forEach(function(url, i) {
 
     if (url.includes('yelp')) {
       yelpScrape(url, function(rating) {
-        if (!ratings.yelp) {
-          ratings.yelp = rating;
-          console.log(ratings);
-          }
-        if (i === urls.length - 1) {
+        ratings.yelp = rating || ratings.yelp;
+        count++;
+
+        if (count === reqCount) {
           res.send(ratings);
         }
+
       });
     } else if (url.includes('foursquare')) {
       foursquareScrape(url, function(rating) {
-        if (!ratings.foursquare) {
-          ratings.foursquare = rating;
-          console.log(ratings);
-          if (i === urls.length - 1) {
-            res.send(ratings);
-          }
+        ratings.foursquare = rating || ratings.foursquare;
+        count++;
+
+        if (count === reqCount) {
+          res.send(ratings);
         }
+
       });
     } else if (url.includes('tripadvisor')) {
       tripadvisorScrape(url, function(rating) {
-        if (!ratings.tripadvisor) {
-          ratings.tripadvisor = rating;
-          console.log(ratings);
-          if (i === urls.length - 1) {
-            res.send(ratings);
-          }
+        ratings.tripadvisor = rating || ratings.tripadvisor;
+        count++;
+
+        if (count === reqCount) {
+          res.send(ratings);
         }
+      
       });
     } else if (url.includes('urbanspoon')) {
       urbanspoonScrape(url, function(rating) {
-        if (!ratings.urbanspoon) {
-          ratings.urbanspoon = rating;
-          console.log(ratings);
-          if (i === urls.length - 1) {
-            res.send(ratings);
-          }
+        ratings.urbanspoon = rating || ratings.urbanspoon;
+        count++;
+
+        if (count === reqCount) {
+          res.send(ratings);
         }
+        
       });
     } else if (url.includes('gogobot')) {
       gogobotScrape(url, function(rating) {
         ratings.gogobot = rating || ratings.gogobot;
-        if (i === urls.length - 1) {
+        count++;
+
+        if (count === reqCount) {
           res.send(ratings);
         }
 
-        // if (!ratings.gogobot || i === urls.length - 1) {
-        //   if (!ratings.gogobot) {
-        //     ratings.gogobot = rating;
-        //     console.log(ratings);
-        //   }
-        // }
-        // if (i === urls.length - 1) {
-        //   res.send(ratings);
-        // }
       });
     }
   });
