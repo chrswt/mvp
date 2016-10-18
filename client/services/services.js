@@ -138,7 +138,20 @@ angular.module('rex.services', [])
     });
   };
 
+  var analyze = function(username) {
+    return $http({
+      method: 'GET',
+      url: '/api/analyze',
+      params: {
+        username: username
+      }
+    }).then(function(res) {
+      return res.data;
+    });
+  };
+
   return {
     submitRating: submitRating
+    analyze: analyze;
   };
 });

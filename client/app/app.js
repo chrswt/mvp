@@ -96,7 +96,14 @@ angular.module('rex', [
       }
       Rating.submitRating($scope.candidateName, $rootScope.user, rating, $scope.places);
     }
-  }
+  };
+
+  $scope.analyzeRatings = function(username) {
+    Rating.analyze(username)
+    .then(function(result) {
+      console.log(result);
+    });
+  };
 })
 
 .controller('authController', function($scope, $rootScope, Auth) {
