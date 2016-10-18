@@ -30,6 +30,7 @@ angular.module('rex', [
   $scope.candidateName;
   $scope.candidateGeneration = true;
   $scope.candidateView = false;
+  $scope.analysis;
 
   $scope.findInstances = function(query) {
     $scope.candidateGeneration = true;
@@ -102,8 +103,9 @@ angular.module('rex', [
     Rating.analyze(username)
     .then(function(result) {
       console.log(result);
-    });
-  };
+      $scope.analysis = result;
+    })
+  }
 })
 
 .controller('authController', function($scope, $rootScope, Auth) {

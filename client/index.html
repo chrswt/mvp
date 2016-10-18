@@ -27,11 +27,12 @@
   </head>
 
 
-  
+
 
   <body ng-app="rex">
 
     <div class="auth-container" ng-controller="authController">
+      <button ng-controller="searchController" class="btn btn-primary btn-lg outline analyze" ng-show="user" ng-click="analyzeRatings(user)">Analyze</button>
       <a ui-sref="register">
         <button class="btn btn-primary btn-lg outline register" ng-show="!user">Register</button>
       </a>
@@ -40,6 +41,7 @@
       </a>
       <div ng-show="user" class="current-user">{{user}}</div>
       <div ng-show="!user" class="current-user">Not Logged In</div>
+
       <a ng-click="logout()">
         <button class="btn btn-primary btn-lg outline logout" ng-show="!!user">Logout</button>
       </a>

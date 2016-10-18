@@ -151,7 +151,7 @@ angular.module('rex.services', [])
   };
 
   return {
-    submitRating: submitRating
-    analyze: analyze;
+    submitRating: submitRating,
+    analyze: analyze
   };
 });

@@ -92,6 +92,18 @@ module.exports = {
 
   checkRatings: function(req, callback) {
     console.log('db to do check on: ', req.query.username);
+    var username = req.query.username;
+
+    var query = 'SELECT * FROM ratings WHERE username = "' + username + '";';
+
+    dbConnection.query(query, function(err, rows) {
+      if (rows.length === 0) {
+        console.log('No data available');
+        callback(null);
+      } else {
+        callback(rows);
+      }
+    })
   }
 };
 
