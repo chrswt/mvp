@@ -88,6 +88,10 @@ module.exports = {
         callback(false);
       }
     });
+  },
+
+  checkRatings: function(req, callback) {
+    console.log('db to do check on: ', req.query.username);
   }
 };
 

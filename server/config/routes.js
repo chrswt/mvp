@@ -8,5 +8,6 @@ module.exports = function(app) {
   app.get('/api/crosswalk', factual.searchCrosswalk);
   app.get('/api/crosswalk/scrape', scraper.scrape);
   app.post('/api/submitrating', rating.submit);
+  app.get('/api/analyze', rating.check);
 };
 
