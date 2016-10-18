@@ -1,5 +1,7 @@
 angular.module('rex', [
-  'rex.services'
+  'rex.services',
+  'angular-loading-bar',
+  'ngAnimate'
 ])
 
 .controller('searchController', function($scope, Search) {
@@ -83,7 +85,7 @@ angular.module('rex', [
 .directive('ngCrosswalkResults', function() {
   return {
     template:
-      '<div class="results-container">' +
+      '<div class="results-container"' +
         '<div ng-if="$index === 0">{{$parent.candidateName}}</div>' +
         '<div>{{key}}</div>' +
         '<div>{{value}}</div>' +

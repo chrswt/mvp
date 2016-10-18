@@ -18,6 +18,7 @@
   "homepage": "https://github.com/chrswt/2016-09-mvp#readme",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
     "cheerio": "^0.22.0",
     "express": "^4.14.0",
     "factual-api": "^1.0.7",

@@ -115,3 +115,7 @@ input.search {
 input.search:focus {
   outline: none;
 }
+
+#loading-bar .bar {
+  position: relative;
+}

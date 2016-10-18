@@ -11,6 +11,11 @@
     <script src="lib/angular/angular.min.js"></script>
     <script src="app/app.js"></script>
     <script src="services/services.js"></script>
+
+    <script src="lib/angular-animate.min.js"></script>
+
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
+     <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
   </head>
 
   <body>
@@ -26,6 +31,7 @@
       <ng-search-results ng-repeat="candidate in candidates[candidates.length -1]" ng-show="candidateGeneration"></ng-search-results>
 
       <ng-crosswalk-results ng-repeat="(key, value) in places" ng-show="candidateView"></ng-crosswalk-results>
+
     </div>
 
   </body>
