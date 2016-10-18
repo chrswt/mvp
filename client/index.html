@@ -20,19 +20,24 @@
   </head>
 
   <body ng-app="rex">
+
+
     <div class="auth-container">
       <a ui-sref="register">
         <button class="btn btn-primary btn-lg outline register">Register</button>
       </a>
-      <button class="btn btn-primary btn-lg outline login">Login</button>
-
+      <a ui-sref="login">
+        <button class="btn btn-primary btn-lg outline login">Login</button>
+      </a>
       <button class="btn btn-primary btn-lg outline logout">Logout</button>
 
     </div>
 
+    <ui-view></ui-view>
+
     <h1 class="title">rex</h1>
 
-        <ui-view></ui-view>
+    
 
     
     <div class ="col-6" ng-controller="searchController">

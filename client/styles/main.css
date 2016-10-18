@@ -50,6 +50,16 @@ body {
   width: 100px;
 }
 
+.auth-form {
+  width: 20%;
+  height: 20%;
+  float: right;
+  right: 2%;
+  top: 50px;
+  position: fixed;
+  color: white;
+}
+
 /** Search Form and Button Styling **/
 
 .btn {
@@ -81,6 +91,7 @@ body {
 .btn.outline {
   background: none;
   padding: 12px 22px;
+  width: 100px;
 }
 
 .btn-primary.outline {
@@ -131,11 +142,6 @@ input:focus {
   outline: none;
 }
 
-.register-form {
-  width: 100vw;
-  height: 100vh;
-}
-
 .candidate-name {
   font-size: 28px;
   font-weight: bold;
@@ -177,4 +183,13 @@ input:focus {
 .results-name {
   font-size: 36px;
   text-align: left;
+}
+
+form, h1, .auth-btn {
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+}
+
+.username, .password {
+  margin: 5px 5px;
 }

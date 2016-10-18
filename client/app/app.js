@@ -5,6 +5,24 @@ angular.module('rex', [
   'ui.router'
 ])
 
+.config(function($stateProvider) {
+  $stateProvider
+    .state('register', {
+      templateUrl: 'app/auth/register.html',
+      controller: 'authController'
+    })
+
+    .state('login', {
+      templateUrl: 'app/auth/login.html',
+      controller: 'authController'
+    })
+
+    .state('home', {
+      template: '',
+      controller: 'authController'
+    });
+})
+
 .controller('searchController', function($scope, Search) {
   $scope.candidates = [];
   $scope.places = [];
