@@ -7,6 +7,12 @@ var dbConnection = mysql.createConnection({
 });
 
 module.exports = {
-  // list all db query functions here
+  createUser: function(req, callback) {
+    
+  },
+
+  checkUserCredentials: function(req, callback) {
+
+  }  
 };
 
