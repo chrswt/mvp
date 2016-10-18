@@ -61,6 +61,8 @@
       <ng-search-results ng-repeat="candidate in candidates[candidates.length -1]" ng-show="candidateGeneration"></ng-search-results>
 
       <ng-crosswalk-results ng-repeat="(key, value) in places" ng-show="candidateView"></ng-crosswalk-results>
+
+      <ng-analysis ng-repeat="(key, value) in analysis" ng-show="analysisView"></ng-analysis>
     </div>
 
   </body>

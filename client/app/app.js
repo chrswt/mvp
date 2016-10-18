@@ -31,21 +31,23 @@ angular.module('rex', [
   $scope.candidateGeneration = true;
   $scope.candidateView = false;
   $scope.analysis;
+  $scope.analysisView = false;
 
   $scope.findInstances = function(query) {
     $scope.candidateGeneration = true;
     $scope.candidateView = false;
+    $scope.analysisView = false;
 
     Search.findInstances(query)
     .then(function(res) {
       $scope.candidates.push(res);
-      console.log('candidates: ', $scope.candidates);
     });
   };
 
   $scope.searchCrosswalk = function(id, name) {
     $scope.candidateGeneration = false;
     $scope.candidateView = true;
+    $scope.analysisView = false;
 
     $scope.candidateName = name;
     var results = [];
@@ -69,18 +71,16 @@ angular.module('rex', [
         }
       });
       
-      console.log('urls to scrape: ', urlsToScrape);
       if (urlsToScrape.length <= 1) {
         $scope.places = {
-          error: 'We could not find any review sites for this business!'
+          ERROR: 'We could not find any review sites for this business!'
         }
       } else {
         $scope.places = {
-          loading: 'We are processing your request'
+          LOADING: 'We are processing your request'
         }
         Search.scrapeAll(urlsToScrape)
         .then(function(result) {
-          console.log('ratings object: ', result);
           $scope.places = result;
 
         });
@@ -100,6 +100,10 @@ angular.module('rex', [
   };
 
   $scope.analyzeRatings = function(username) {
+    $scope.candidateGeneration = false;
+    $scope.candidateView = false;
+    $scope.analysisView = true;
+
     Rating.analyze(username)
     .then(function(result) {
       console.log(result);
@@ -170,3 +174,9 @@ angular.module('rex', [
         '</div>'
   };
 })
+
+.directive('ngAnalysis', function() {
+  return {
+    template: '<div>ANALYZE ME</div>'
+  };
+});
