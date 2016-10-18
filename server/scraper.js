@@ -13,9 +13,9 @@ exports.scrape = function(req, res) {
         if (!ratings.yelp) {
           ratings.yelp = rating;
           console.log(ratings);
-          if (i === urls.length - 1) {
-            res.send(ratings);
           }
+        if (i === urls.length - 1) {
+          res.send(ratings);
         }
       });
     } else if (url.includes('foursquare')) {
@@ -48,10 +48,23 @@ exports.scrape = function(req, res) {
           }
         }
       });
-    } else if (url.includes('zagat')) {
-
     } else if (url.includes('gogobot')) {
+      gogobotScrape(url, function(rating) {
+        ratings.gogobot = rating || ratings.gogobot;
+        if (i === urls.length - 1) {
+          res.send(ratings);
+        }
 
+        // if (!ratings.gogobot || i === urls.length - 1) {
+        //   if (!ratings.gogobot) {
+        //     ratings.gogobot = rating;
+        //     console.log(ratings);
+        //   }
+        // }
+        // if (i === urls.length - 1) {
+        //   res.send(ratings);
+        // }
+      });
     }
   });
 };
@@ -126,23 +139,6 @@ var urbanspoonScrape = function(url, callback) {
   });
 };
 
-var zagatScrape = function(url, callback) {
-  var rating;
-
-  request(url, function(err, resp, html) {
-    if (!err) {
-      var $ = cheerio.load(html);
-
-      if (!rating) {
-        rating = $('.venueScore').attr('title');
-        if (rating) {
-          callback(rating);
-        }
-      }
-    }
-  });
-};
-
 var gogobotScrape = function(url, callback) {
   var rating;
 
@@ -151,9 +147,11 @@ var gogobotScrape = function(url, callback) {
       var $ = cheerio.load(html);
 
       if (!rating) {
-        rating = $('.venueScore').attr('title');
-        if (rating) {
-          callback(rating);
+        if ($('.average')[0]) {
+          rating = $('.average')[0].attribs.title;
+          if (rating) {
+            callback(rating);
+          }
         }
       }
     }

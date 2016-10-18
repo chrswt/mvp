@@ -35,13 +35,13 @@ angular.module('rex', [
       current = results[results.length - 1];
 
       current.data.forEach(function(xwalk) {
-        if (xwalk.namespace === 'zagat' ||
+        if (
           xwalk.namespace === 'gogobot' ||
           xwalk.namespace === 'yelp' ||
           xwalk.namespace === 'tripadvisor' ||
           xwalk.namespace === 'urbanspoon' ||
-          xwalk.namespace === 'facebook' ||
-          xwalk.namespace === 'foursquare') {
+          xwalk.namespace === 'foursquare'
+        ) {
           urlsToScrape.push(xwalk.url);
         }
       });
