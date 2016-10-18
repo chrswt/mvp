@@ -1,8 +1,18 @@
 angular.module('rex', [
   'rex.services',
   'angular-loading-bar',
-  'ngAnimate'
+  'ngAnimate',
+  'ui.router'
 ])
+
+.config(function($stateProvider) {
+  $stateProvider
+    .state('register', {
+      // url: '/register',
+      templateUrl: 'app/auth/register.html',
+      controller: 'authController',
+    })
+})
 
 .controller('searchController', function($scope, Search) {
   $scope.candidates = [];

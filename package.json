@@ -20,10 +20,12 @@
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
     "angular-loading-bar": "^0.9.0",
+    "angular-ui-router": "^0.3.1",
     "cheerio": "^0.22.0",
     "express": "^4.14.0",
     "factual-api": "^1.0.7",
     "mysql": "^2.11.1",
-    "request": "^2.75.0"
+    "request": "^2.75.0",
+    "ui-router": "^1.0.0-alpha.3"
   }
 }

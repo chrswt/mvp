@@ -112,11 +112,11 @@ input {
   font-family: 'Muli', sans-serif;
 }
 
-input.search, input.btn {
+input {
   display: inline-block;
 }
 
-input.search {
+input {
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   height: 40px;
@@ -127,6 +127,16 @@ input.search {
   vertical-align: -2px;
 }
 
-input.search:focus {
+input:focus {
   outline: none;
+}
+
+.register-form {
+  background: rgba(255,255,255,1);
+  display: inline;
+  float: right;
+  width: 25%;
+  margin-top: -150px;
+  margin-right: 0px;
+  padding: 30px;
 }
