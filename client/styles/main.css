@@ -17,6 +17,8 @@ body {
   font-size: 72px;
   margin: 0 auto;
   text-align: center;
+  display: block;
+  width: 100vw;
 }
 
 .col-6 {
@@ -33,6 +35,19 @@ body {
   border: 1px solid #0dffc3;
   padding: 10px;
   margin: 5px;
+}
+
+/** Login, Register, and Logout Buttons **/
+.auth-container {
+  width: 100%;
+  float: right;
+}
+
+.login, .logout, .register {
+  float: right;
+  padding: 5px;
+  margin: 5px;
+  width: 100px;
 }
 
 /** Search Form and Button Styling **/
