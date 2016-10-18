@@ -89,9 +89,19 @@ angular.module('rex.services', [])
 })
 
 .factory('Rating', function($http) {
-  var submitRating = function(restID, userID, rating) {
-    console.log('rating submitted for: ', restID, userID, rating);
-
+  var submitRating = function(bizName, username, rating) {
+    console.log('rating submitted for: ', bizName, username, rating);
+    return $http({
+      method: 'POST',
+      url: '/api/submitrating',
+      params: {
+        bizName: bizName,
+        username: username,
+        rating: rating
+      }
+    }).then(function(res) {
+      return res.data
+    })
   };
 
   return {
