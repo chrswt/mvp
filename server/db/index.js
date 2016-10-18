@@ -53,35 +53,41 @@ module.exports = {
     var username = req.query.username;
     var business = req.query.bizName;
     var rating = req.query.rating;
-    var comparisons = req.query.comparisons;
-    var yelp = null;
-    var gogobot = null;
-    var tripadvisor = null;
-    var urbanspoon = null;
-    var foursquare = null;
-
-    console.log(Object.keys(comparisons));
-
-    for (var key in comparisons) {
-      console.log('key in comparisons', key);
-      if (key === 'yelp') {
-        console.log('IM GETTING CALLED YELP WHY');
-        yelp = comparisons[key].slice(0, 4);
-        console.log('YELP IS NOW: ', yelp);
-      } else if (key === 'gogobot') {
-        gogobot = comparisons[key].slice(0, 4);
-      } else if (key === 'tripadvisor') {
-        tripadvisor = comparisons[key].slice(0, 4);
-      } else if (key === 'urbanspoon') {
-        urbanspoon = comparisons[key].slice(0, 4);
-      } else if (key === 'foursquare') {
-        foursquare = comparisons[key].slice(0, 4);
-      }
+    var yelp = req.query.yelp;
+    var gogobot = req.query.gogobot;
+    var tripadvisor = req.query.tripadvisor;
+    var foursquare = req.query.foursquare;
+    var urbanspoon = req.query.urbanspoon;
+    
+    if (yelp === undefined) {
+      yelp = null;
+    }
+    if (gogobot === undefined) {
+      gogobot = null;
+    }
+    if (tripadvisor === undefined) {
+      tripadvisor = null;
+    }
+    if (foursquare === undefined) {
+      foursquare = null;
+    }
+    if (urbanspoon === undefined) {
+      urbanspoon = null;
     }
 
-    console.log(yelp, gogobot, tripadvisor, urbanspoon, foursquare);
+    var insert = 'INSERT INTO ratings (username, business, rating, yelp, foursquare, urbanspoon, tripadvisor, gogobot) ' +
+      'VALUES ("' + username + '", "' + business + '", "' +
+      rating + '", "' + yelp + '", "' + foursquare + '", "' +
+      urbanspoon + '", "' + tripadvisor + '", "' + gogobot + '");';
 
-    console.log(username, business, rating, comparisons)
+    dbConnection.query(insert, function(err) {
+      if (!err) {
+        callback(true);
+      } else {
+        console.log(err);
+        callback(false);
+      }
+    });
   }
 };
 

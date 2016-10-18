@@ -90,7 +90,36 @@ angular.module('rex.services', [])
 
 .factory('Rating', function($http) {
   var submitRating = function(bizName, username, rating, comparisons) {
-    console.log('rating submitted for: ', bizName, username, rating, comparisons);
+    if (comparisons.yelp) {
+      var yelp = comparisons.yelp.slice(0, 4);
+    } else {
+      var yelp = null;
+    }
+
+   if (comparisons.gogobot) {
+     var gogobot = comparisons.gogobot.slice(0, 4);
+   } else {
+     var gogobot = null;
+   }
+
+   if (comparisons.tripadvisor) {
+     var tripadvisor = comparisons.tripadvisor.slice(0, 4);
+   } else {
+     var tripadvisor = null;
+   }
+
+   if (comparisons.foursquare) {
+     var foursquare = comparisons.foursquare.slice(0, 3) / 2;
+   } else {
+     var foursquare = null;
+   }
+
+   if (comparisons.urbanspoon) {
+     var urbanspoon = comparisons.urbanspoon.slice(0, 3);
+   } else {
+     var urbanspoon = null;
+   }
+
     return $http({
       method: 'POST',
       url: '/api/submitrating',
@@ -98,7 +127,11 @@ angular.module('rex.services', [])
         bizName: bizName,
         username: username,
         rating: rating,
-        comparisons: comparisons
+        yelp: yelp,
+        gogobot: gogobot,
+        tripadvisor: tripadvisor,
+        foursquare: foursquare,
+        urbanspoon: urbanspoon
       }
     }).then(function(res) {
       return res.data;

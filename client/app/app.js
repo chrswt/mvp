@@ -91,6 +91,9 @@ angular.module('rex', [
     if (!$rootScope.user) {
       alert('You must login to save your ratings!');
     } else {
+      if (!$scope.places) {
+        alert('Please wait for our scrapers to complete their work :)');
+      }
       Rating.submitRating($scope.candidateName, $rootScope.user, rating, $scope.places);
     }
   }
