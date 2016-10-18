@@ -86,4 +86,15 @@ angular.module('rex.services', [])
     logout: logout
   };
 
+})
+
+.factory('Rating', function($http) {
+  var submitRating = function(restID, userID, rating) {
+    console.log('rating submitted for: ', restID, userID, rating);
+
+  };
+
+  return {
+    submitRating: submitRating
+  };
 });

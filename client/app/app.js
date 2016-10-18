@@ -24,7 +24,7 @@ angular.module('rex', [
     });
 })
 
-.controller('searchController', function($scope, Search, $rootScope) {
+.controller('searchController', function($scope, Search, $rootScope, Rating) {
   $scope.candidates = [];
   $scope.places = [];
   $scope.candidateName;
@@ -87,11 +87,10 @@ angular.module('rex', [
   };
 
   $scope.submitRating = function(rating) {
-    console.log('submitting rating!')
     if (!$rootScope.user) {
       alert('You must login to save your ratings!');
     } else {
-      alert(rating);
+      Rating.submitRating($scope.candidateName, $rootScope.user, rating);
     }
   }
 })
