@@ -7,7 +7,7 @@ module.exports = function(app) {
   app.get('/api/crosswalk', factual.searchCrosswalk);
   app.get('/api/crosswalk/scrape', scraper.scrape);
   // app.post('/api/register', auth.register);
-  app.get('/api/login', auth.login);
-  app.get('/api/logout', auth.logout);
+  // app.get('/api/login', auth.login);
+  // app.get('/api/logout', auth.logout);
 };
 

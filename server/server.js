@@ -40,6 +40,7 @@ app.get('/api/checkcredentials', function(req, res) {
 });
 
 app.get('/api/logout', function(req, res) {
+  console.log('api logout');
   req.session.destroy();
   res.send('session ended');
 })

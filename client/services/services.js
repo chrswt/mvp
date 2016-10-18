@@ -60,16 +60,28 @@ angular.module('rex.services', [])
   var checkCredentials = function() {
     return $http({
       method: 'GET',
-      url: '/api/checkcredentials',
+      url: '/api/checkcredentials'
     }).then(function(res) {
       console.log('check creds: ', res.data);
       return res.data;
     });
   };
 
+  var logout = function() {
+    console.log('factory logout');
+    return $http({
+      method: 'GET',
+      url: '/api/logout'
+    }).then(function(res) {
+      console.log(res);
+      return res;
+    })
+  }
+
   return {
     register: register,
-    checkCredentials: checkCredentials
+    checkCredentials: checkCredentials,
+    logout: logout
   }
 
 });
