@@ -67,6 +67,15 @@ angular.module('rex', [
   };
 })
 
+.controller('authController', function($scope, Auth) {
+  $scope.register = function(user, pass) {
+    Auth.register(user, pass)
+    .then(function(res) {
+      console.log('registration done: ', res);
+    })
+  }
+})
+
 .directive('ngSearchResults', function() {
   return {
     template:

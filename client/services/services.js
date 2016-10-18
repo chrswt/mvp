@@ -41,4 +41,20 @@ angular.module('rex.services', [])
     scrapeAll: scrapeAll
   };
 
+})
+
+.factory('Auth', function($http) {
+  var register = function(username, password) {
+    return $http({
+      method: 'POST',
+      url: '/api/register',
+      params: {
+        username: username,
+        password: password
+      }
+    }).then(function(res) {
+      return res.data;
+    })
+  }
+
 });
