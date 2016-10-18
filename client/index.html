@@ -29,6 +29,7 @@
       <a ui-sref="login">
         <button class="btn btn-primary btn-lg outline login" ng-show="!user">Login</button>
       </a>
+      <div ng-show="user" class="current-user">{{user}}</div>
       <a ng-click="logout()">
         <button class="btn btn-primary btn-lg outline logout" ng-show="!!user">Logout</button>
       </a>

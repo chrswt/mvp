@@ -1,10 +1,10 @@
 <div class="auth-form" ng-hide="user">
   <h1>Login</h1>
-  <form>
+  <form ng-submit="login(loginUserField, loginPassField)">
     <div>Enter your username:</div>
-    <input type="text" class="username">
+    <input type="text" class="username" ng-model="loginUserField">
     <div>Enter your password:</div>
-    <input type="password" class="password">
+    <input type="password" class="password" ng-model="loginPassField">
     <br />
     <button class="btn btn-primary btn-lg outline auth-btn">Login</button>
     <a ui-sref="home">

@@ -57,12 +57,15 @@ angular.module('rex.services', [])
     });
   };
 
-  var checkCredentials = function() {
+  var login = function(username, password) {
     return $http({
       method: 'GET',
-      url: '/api/checkcredentials'
+      url: '/api/login',
+      params: {
+        username: username,
+        password: password
+      }
     }).then(function(res) {
-      console.log('check creds: ', res.data);
       return res.data;
     });
   };
@@ -73,15 +76,14 @@ angular.module('rex.services', [])
       method: 'GET',
       url: '/api/logout'
     }).then(function(res) {
-      console.log(res);
       return res;
-    })
-  }
+    });
+  };
 
   return {
     register: register,
-    checkCredentials: checkCredentials,
+    login: login,
     logout: logout
-  }
+  };
 
 });

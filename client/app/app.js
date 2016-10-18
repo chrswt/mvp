@@ -94,7 +94,6 @@ angular.module('rex', [
     .then(function(res) {
       if (res) {
         $rootScope.user = user;
-        console.log('registered! rootscope is now: ', $rootScope.user);
       } else {
         alert('This username is taken!');
       }
@@ -107,6 +106,17 @@ angular.module('rex', [
       $rootScope.user = undefined;
     });
   };
+
+  $scope.login = function(user, pass) {
+    Auth.login(user, pass)
+    .then(function(res) {
+      if (res) {
+        $rootScope.user = user;
+      } else {
+        alert('Login credentials invalid!');
+      }
+    });
+  };
 })
 
 .directive('ngSearchResults', function() {
@@ -116,6 +126,8 @@ angular.module('rex', [
         '<div class="candidate-name" ng-click="searchCrosswalk(candidate.factual_id, candidate.name)">{{candidate.name}}</div>' +
         '<div class="candidate-address">{{candidate.address}}</div>' +
         '<div class="candidate-address">{{candidate.locality}}</div>' +
+        '<div class="candidate-address">{{candidate.tel}}</div>' +
+        '<div>{{candidate.hours_display}}</div>' +
         '<div class="candidate-neighborhoods">' +
           '<div ng-repeat="neighborhood in candidate.neighborhood">{{neighborhood}}</div>' +
         '</div>' + 

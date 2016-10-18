@@ -33,7 +33,20 @@ module.exports = {
   },
 
   checkUserCredentials: function(req, callback) {
+    var username = req.query.username;
+    var password = req.query.password;
 
+    var userQuery = 'SELECT * FROM users ' +
+      'WHERE username = "' + username + '"' +
+      'AND password = "' + password + '"';
+
+    dbConnection.query(userQuery, function(err, rows) {
+      if (rows.length === 0) {
+        callback(false);
+      } else {
+        callback(true);
+      }
+    })
   }  
 };
 

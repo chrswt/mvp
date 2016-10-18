@@ -53,8 +53,7 @@ body {
 .auth-form {
   width: 20%;
   height: 20%;
-  float: right;
-  right: 2%;
+  right: 0px;
   top: 50px;
   position: fixed;
   color: white;
@@ -185,6 +184,8 @@ input:focus {
   text-align: left;
 }
 
+/** Authentication Related **/
+
 form, h1, .auth-btn {
   text-align: center;
   font-family: 'Muli', sans-serif;
@@ -192,4 +193,14 @@ form, h1, .auth-btn {
 
 .username, .password {
   margin: 5px 5px;
+}
+
+.current-user {
+  font-size: 36px;
+  color: white;
+  float: right;
+}
+
+.candidate-name:hover {
+  cursor: pointer;
 }

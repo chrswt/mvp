@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var stormpath = require('express-stormpath');
 var session = require('express-session');
 var db = require('./db/index');
 
@@ -23,26 +22,23 @@ app.post('/api/register', function(req, res) {
   db.createUser(req, function(done) {
     if (done) {
       req.session.user = req.query.username;
-      console.log('requser: ', req.session.user);
     }
     res.send(done);
   });
 });
 
-app.get('/api/checkcredentials', function(req, res) {
-  console.log('req is user?: ', req.session.user);
-  if (req.session.user) {
-    console.log('checking req.session.user: ', req.session.user)
-    res.send(req.session.user);
-  } else {
-    res.send(false);
-  }
-});
-
 app.get('/api/logout', function(req, res) {
-  console.log('api logout');
   req.session.destroy();
   res.send('session ended');
+});
+
+app.get('/api/login', function(req, res) {
+  db.checkUserCredentials(req, function(validated) {
+    if (validated) {
+      req.session.user = req.query.username;
+    }
+    res.send(validated);
+  });
 })
 
 app.listen(3000);
