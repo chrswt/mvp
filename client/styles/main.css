@@ -206,3 +206,7 @@ input:focus {
   font-size: 36px;
   text-align: left;
 }
+
+.material-icons:hover {
+  cursor: pointer;
+}

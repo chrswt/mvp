@@ -2,7 +2,8 @@ angular.module('rex', [
   'rex.services',
   'angular-loading-bar',
   'ngAnimate',
-  'ui.router'
+  'ui.router',
+  'jkAngularRatingStars'
 ])
 
 .config(function($stateProvider) {
@@ -84,6 +85,10 @@ angular.module('rex', [
       }
     });
   };
+
+  $scope.rate = function(rating) {
+    alert(rating);
+  }
 })
 
 .controller('authController', function($scope, $rootScope, Auth) {
@@ -139,11 +144,12 @@ angular.module('rex', [
   return {
     template:
       '<div class="results-container">' +
-        '<div class="results-name" ng-if="$index === 0">{{$parent.candidateName}}</div>' +
-        '<div class="rating-site">' +
-          '<div class="rate">{{key}}</div>' +
-          '<div class="rate">{{value}}</div>' +
-        '</div>' +
-      '</div>'
+        '<div class="results-name" ng-if="$index === 0">{{$parent.candidateName}}</div>' + 
+          '<jk-rating-stars max-rating="5" on-rating="rate(rating)" ></jk-rating-stars>' +
+          '<div class="rating-site">' +
+            '<div class="rate">{{key}}</div>' +
+            '<div class="rate">{{value}}</div>' +
+          '</div>' +
+        '</div>'
   };
 })
