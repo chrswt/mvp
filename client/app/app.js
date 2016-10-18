@@ -3,7 +3,8 @@ angular.module('rex', [
   'angular-loading-bar',
   'ngAnimate',
   'ui.router',
-  'jkAngularRatingStars'
+  'jkAngularRatingStars',
+  'angularCharts'
 ])
 
 .config(function($stateProvider) {
@@ -28,15 +29,15 @@ angular.module('rex', [
   $scope.candidates = [];
   $scope.places = [];
   $scope.candidateName;
-  $scope.candidateGeneration = true;
-  $scope.candidateView = false;
-  $scope.analysis;
-  $scope.analysisView = false;
+  $rootScope.candidateGeneration = false;
+  $rootScope.candidateView = false;
+  $rootScope.analysisView = true;
+  $rootScope.analysis;
 
   $scope.findInstances = function(query) {
-    $scope.candidateGeneration = true;
-    $scope.candidateView = false;
-    $scope.analysisView = false;
+    $rootScope.candidateGeneration = true;
+    $rootScope.candidateView = false;
+    $rootScope.analysisView = false;
 
     Search.findInstances(query)
     .then(function(res) {
@@ -45,9 +46,9 @@ angular.module('rex', [
   };
 
   $scope.searchCrosswalk = function(id, name) {
-    $scope.candidateGeneration = false;
-    $scope.candidateView = true;
-    $scope.analysisView = false;
+    $rootScope.candidateGeneration = false;
+    $rootScope.candidateView = true;
+    $rootScope.analysisView = false;
 
     $scope.candidateName = name;
     var results = [];
@@ -100,17 +101,50 @@ angular.module('rex', [
   };
 
   $scope.analyzeRatings = function(username) {
-    $scope.candidateGeneration = false;
-    $scope.candidateView = false;
-    $scope.analysisView = true;
+    $rootScope.candidateGeneration = false;
+    $rootScope.candidateView = false;
+    $rootScope.analysisView = true;
 
     Rating.analyze(username)
     .then(function(result) {
-      console.log(result);
-      $scope.analysis = result;
-    })
-  }
+      $rootScope.analysis = result;
+      console.log($rootScope.analysis);
+    });
+  };
 })
+
+//   $scope.config = {
+//       title: 'Products',
+//       tooltips: true,
+//       labels: false,
+//       mouseover: function() {},
+//       mouseout: function() {},
+//       click: function() {},
+//       legend: {
+//         display: true,
+//         //could be 'left, right'
+//         position: 'right'
+//       }
+//     };
+
+//   $scope.data = {
+//     series: ['Sales', 'Income', 'Expense', 'Laptops', 'Keyboards'],
+//     data: [{
+//       x: "Laptops",
+//       y: [100, 500, 0],
+//       tooltip: "this is tooltip"
+//     }, {
+//       x: "Desktops",
+//       y: [300, 100, 100]
+//     }, {
+//       x: "Mobiles",
+//       y: [351]
+//     }, {
+//       x: "Tablets",
+//       y: [54, 0, 879]
+//     }]
+//   };
+// })
 
 .controller('authController', function($scope, $rootScope, Auth) {
   $rootScope.user;
@@ -175,8 +209,13 @@ angular.module('rex', [
   };
 })
 
-.directive('ngAnalysis', function() {
+.directive('ngAnalysisResults', function() {
   return {
-    template: '<div>ANALYZE ME</div>'
+    template:
+      '<div class="analysis-container">' +
+        '<div class="analysis-result">{{key}}</div>' +
+        '<div class="analysis-result">{{value}}</div>' + '</div>'
+      //   '<div data-ac-chart="\'bar\'"data-ac-data="data"data-ac-config="config" class="chart"></div>' +
+      // '</div>'
   };
-});
+})

@@ -215,3 +215,15 @@ input:focus {
   width: 50%;
   float: right;
 }
+
+.analysis-result {
+  font-size: 30px;
+  color: white;
+}
+
+.chart {
+  width: 500px;
+  height: 500px;
+}
+
+

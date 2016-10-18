@@ -24,6 +24,9 @@
     <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
     <script src="lib/angular-jk-rating-stars/dist/jk-rating-stars.js"></script>
 
+
+    <script data-require="d3@*" data-semver="3.3.11" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.11/d3.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/chinmaymk/angular-charts/bower/dist/angular-charts.min.js"></script>
   </head>
 
 
@@ -62,7 +65,7 @@
 
       <ng-crosswalk-results ng-repeat="(key, value) in places" ng-show="candidateView"></ng-crosswalk-results>
 
-      <ng-analysis ng-repeat="(key, value) in analysis" ng-show="analysisView"></ng-analysis>
+      <ng-analysis-results ng-repeat="(key, value) in analysis" ng-show="analysisView"></ng-analysis-results>
     </div>
 
   </body>
