@@ -7,20 +7,19 @@
     <link rel="stylesheet" href="styles/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <link rel="stylesheet" href="lib/angular-loading-bar/build/loading-bar.css">
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
 
     <script src="lib/angular/angular.min.js"></script>
     <script src="app/app.js"></script>
     <script src="services/services.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="lib/angular-animate.min.js"></script>
-
-    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
      <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
   </head>
 
   <body ng-app="rex">
-
 
     <div class="auth-container" ng-controller="authController">
       <a ui-sref="register">
@@ -38,10 +37,7 @@
     <ui-view></ui-view>
 
     <h1 class="title">rex</h1>
-
-    
-
-    
+ 
     <div class ="col-6" ng-controller="searchController">
       <form ng-submit="findInstances(searchField)">
         <input type="text" class="search" ng-model="searchField" placeholder="Search for your favorite restaurants/hotels/businesses..." />
@@ -52,9 +48,6 @@
       <ng-search-results ng-repeat="candidate in candidates[candidates.length -1]" ng-show="candidateGeneration"></ng-search-results>
 
       <ng-crosswalk-results ng-repeat="(key, value) in places" ng-show="candidateView"></ng-crosswalk-results>
-
-
-
     </div>
 
   </body>

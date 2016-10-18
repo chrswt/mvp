@@ -37,7 +37,29 @@ body {
   margin: 5px;
 }
 
-/** Login, Register, and Logout Buttons **/
+.candidate-name:hover {
+  cursor: pointer;
+}
+
+/** Authentication Related **/
+
+form, h1, .auth-btn {
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+}
+
+.username, .password {
+  margin: 5px 5px;
+}
+
+.current-user {
+  font-size: 36px;
+  color: white;
+  font-family: 'Inconsolata', monospace;
+  padding-left: 5px;
+  float: left;
+}
+
 .auth-container {
   width: 100%;
   float: right;
@@ -154,6 +176,7 @@ input:focus {
 
 .candidate-neighborhoods {
   font-size: 16px;
+  padding-top: 5px;
 }
 
 .rating-site {
@@ -170,7 +193,7 @@ input:focus {
 .results-container {
   padding-top: 30px;
   overflow: hidden;
-  background: rgba(99, 99, 99, 0.9);
+  background: rgba(34, 36, 36, 0.9);
   color: white;
   padding: 10px 10px;
 }
@@ -182,25 +205,4 @@ input:focus {
 .results-name {
   font-size: 36px;
   text-align: left;
-}
-
-/** Authentication Related **/
-
-form, h1, .auth-btn {
-  text-align: center;
-  font-family: 'Muli', sans-serif;
-}
-
-.username, .password {
-  margin: 5px 5px;
-}
-
-.current-user {
-  font-size: 36px;
-  color: white;
-  float: right;
-}
-
-.candidate-name:hover {
-  cursor: pointer;
 }
