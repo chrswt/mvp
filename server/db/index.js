@@ -47,6 +47,41 @@ module.exports = {
         callback(true);
       }
     })
-  }  
+  },
+
+  submitRatings: function(req, callback) {
+    var username = req.query.username;
+    var business = req.query.bizName;
+    var rating = req.query.rating;
+    var comparisons = req.query.comparisons;
+    var yelp = null;
+    var gogobot = null;
+    var tripadvisor = null;
+    var urbanspoon = null;
+    var foursquare = null;
+
+    console.log(Object.keys(comparisons));
+
+    for (var key in comparisons) {
+      console.log('key in comparisons', key);
+      if (key === 'yelp') {
+        console.log('IM GETTING CALLED YELP WHY');
+        yelp = comparisons[key].slice(0, 4);
+        console.log('YELP IS NOW: ', yelp);
+      } else if (key === 'gogobot') {
+        gogobot = comparisons[key].slice(0, 4);
+      } else if (key === 'tripadvisor') {
+        tripadvisor = comparisons[key].slice(0, 4);
+      } else if (key === 'urbanspoon') {
+        urbanspoon = comparisons[key].slice(0, 4);
+      } else if (key === 'foursquare') {
+        foursquare = comparisons[key].slice(0, 4);
+      }
+    }
+
+    console.log(yelp, gogobot, tripadvisor, urbanspoon, foursquare);
+
+    console.log(username, business, rating, comparisons)
+  }
 };
 

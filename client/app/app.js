@@ -81,6 +81,7 @@ angular.module('rex', [
         .then(function(result) {
           console.log('ratings object: ', result);
           $scope.places = result;
+
         });
       }
     });
@@ -90,7 +91,7 @@ angular.module('rex', [
     if (!$rootScope.user) {
       alert('You must login to save your ratings!');
     } else {
-      Rating.submitRating($scope.candidateName, $rootScope.user, rating);
+      Rating.submitRating($scope.candidateName, $rootScope.user, rating, $scope.places);
     }
   }
 })

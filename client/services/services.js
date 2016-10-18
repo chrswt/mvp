@@ -89,19 +89,20 @@ angular.module('rex.services', [])
 })
 
 .factory('Rating', function($http) {
-  var submitRating = function(bizName, username, rating) {
-    console.log('rating submitted for: ', bizName, username, rating);
+  var submitRating = function(bizName, username, rating, comparisons) {
+    console.log('rating submitted for: ', bizName, username, rating, comparisons);
     return $http({
       method: 'POST',
       url: '/api/submitrating',
       params: {
         bizName: bizName,
         username: username,
-        rating: rating
+        rating: rating,
+        comparisons: comparisons
       }
     }).then(function(res) {
-      return res.data
-    })
+      return res.data;
+    });
   };
 
   return {

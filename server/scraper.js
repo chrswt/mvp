@@ -71,7 +71,7 @@ var yelpScrape = function(url, callback) {
     console.log('yelp has left to scrape');
     if (!err) {
       var $ = cheerio.load(html);
-      
+     
       if (!rating) {
         rating = $('.star-img').attr('title');
         if (rating) { // Handles first rating = undefined edge cases
@@ -87,7 +87,7 @@ var yelpScrape = function(url, callback) {
 
 var foursquareScrape = function(url, callback) {
   var rating;
-
+  
   request(url, function(err, resp, html) {
     console.log('foursquare has left to scrape');
     if (!err) {
