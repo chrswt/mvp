@@ -23,15 +23,14 @@
 
 
     <div class="auth-container" ng-controller="authController">
-      <p>{{loggedIn}}</p>
-      <a ui-sref="register" ng-show="!loggedIn">
-        <button class="btn btn-primary btn-lg outline register">Register</button>
+      <a ui-sref="register">
+        <button class="btn btn-primary btn-lg outline register" ng-show="!loggedIn">Register</button>
       </a>
       <a ui-sref="login">
         <button class="btn btn-primary btn-lg outline login" ng-show="!loggedIn">Login</button>
       </a>
       <a ui-sref="logout" ng-show="loggedIn">
-        <button class="btn btn-primary btn-lg outline logout">Logout</button>
+        <button class="btn btn-primary btn-lg outline logout" ng-show="loggedIn">Logout</button>
       </a>
     </div>
 

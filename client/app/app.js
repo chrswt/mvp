@@ -86,15 +86,16 @@ angular.module('rex', [
   };
 })
 
-.controller('authController', function($scope, Auth) {
+.controller('authController', function($scope, $rootScope, Auth) {
   $scope.loggedIn = Auth.checkCredentials();
   console.log($scope.loggedIn);
+  console.log($rootScope.user);
 
   $scope.register = function(user, pass) {
     Auth.register(user, pass)
     .then(function(res) {
       if (res) {
-        // something
+        // $scope.loggedIn = user;
       } else {
         alert('This username is taken!');
       }
@@ -127,4 +128,13 @@ angular.module('rex', [
         '</div>' +
       '</div>'
   };
-});
+})
+
+// .run(function($rootScope, $location, $http) {
+//   $http.get('/api/checkcredentials')
+//   .then(function(user) {
+//     if (user) {
+//       $rootScope.user = user;
+//     }
+//   });
+// });
