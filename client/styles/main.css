@@ -210,3 +210,8 @@ input:focus {
 .material-icons:hover {
   cursor: pointer;
 }
+
+.jk-rating-stars-container {
+  width: 50%;
+  float: right;
+}

@@ -24,7 +24,7 @@ angular.module('rex', [
     });
 })
 
-.controller('searchController', function($scope, Search) {
+.controller('searchController', function($scope, Search, $rootScope) {
   $scope.candidates = [];
   $scope.places = [];
   $scope.candidateName;
@@ -86,8 +86,13 @@ angular.module('rex', [
     });
   };
 
-  $scope.rate = function(rating) {
-    alert(rating);
+  $scope.submitRating = function(rating) {
+    console.log('submitting rating!')
+    if (!$rootScope.user) {
+      alert('You must login to save your ratings!');
+    } else {
+      alert(rating);
+    }
   }
 })
 
@@ -144,8 +149,8 @@ angular.module('rex', [
   return {
     template:
       '<div class="results-container">' +
-        '<div class="results-name" ng-if="$index === 0">{{$parent.candidateName}}</div>' + 
-          '<jk-rating-stars max-rating="5" on-rating="rate(rating)" ></jk-rating-stars>' +
+        '<div class="results-name" ng-if="$index === 0">{{$parent.candidateName}}' + 
+          '<jk-rating-stars max-rating="5" on-rating="submitRating(rating)" ></jk-rating-stars></div>' +
           '<div class="rating-site">' +
             '<div class="rate">{{key}}</div>' +
             '<div class="rate">{{value}}</div>' +
