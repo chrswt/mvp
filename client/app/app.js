@@ -5,15 +5,6 @@ angular.module('rex', [
   'ui.router'
 ])
 
-.config(function($stateProvider) {
-  $stateProvider
-    .state('register', {
-      // url: '/register',
-      templateUrl: 'app/auth/register.html',
-      controller: 'authController',
-    })
-})
-
 .controller('searchController', function($scope, Search) {
   $scope.candidates = [];
   $scope.places = [];
@@ -90,11 +81,10 @@ angular.module('rex', [
   return {
     template:
       '<div class="candidates-container">' +
-        '<div ng-click="searchCrosswalk(candidate.factual_id, candidate.name)">Name: {{candidate.name}}</div>' +
-        '<div>Factual ID: {{candidate.factual_id}}</div>' +
-        '<div>Address: {{candidate.address}}</div>' +
-        '<div>Location: {{candidate.locality}}</div>' +
-        '<div>Neighborhoods:' +
+        '<div class="candidate-name" ng-click="searchCrosswalk(candidate.factual_id, candidate.name)">{{candidate.name}}</div>' +
+        '<div class="candidate-address">{{candidate.address}}</div>' +
+        '<div class="candidate-address">{{candidate.locality}}</div>' +
+        '<div class="candidate-neighborhoods">' +
           '<div ng-repeat="neighborhood in candidate.neighborhood">{{neighborhood}}</div>' +
         '</div>' + 
       '</div>'
@@ -104,10 +94,12 @@ angular.module('rex', [
 .directive('ngCrosswalkResults', function() {
   return {
     template:
-      '<div class="results-container"' +
-        '<div ng-if="$index === 0">{{$parent.candidateName}}</div>' +
-        '<div>{{key}}</div>' +
-        '<div>{{value}}</div>' +
+      '<div class="results-container">' +
+        '<div class="results-name" ng-if="$index === 0">{{$parent.candidateName}}</div>' +
+        '<div class="rating-site">' +
+          '<div class="rate">{{key}}</div>' +
+          '<div class="rate">{{value}}</div>' +
+        '</div>' +
       '</div>'
   };
 });

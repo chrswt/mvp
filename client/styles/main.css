@@ -132,11 +132,49 @@ input:focus {
 }
 
 .register-form {
-  background: rgba(255,255,255,1);
-  display: inline;
-  float: right;
-  width: 25%;
-  margin-top: -150px;
-  margin-right: 0px;
-  padding: 30px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.candidate-name {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.candidate-address {
+  display: inline-block;
+  font-size: 20px;
+  margin: 5px 10px;
+}
+
+.candidate-neighborhoods {
+  font-size: 16px;
+}
+
+.rating-site {
+  padding: 5px 3px;
+  text-align: left;
+  width: 100%;
+}
+
+.rate {
+  width: 30%;
+  float: left;
+}
+
+.results-container {
+  padding-top: 30px;
+  overflow: hidden;
+  background: rgba(99, 99, 99, 0.9);
+  color: white;
+  padding: 10px 10px;
+}
+
+.rating-site {
+  border: none;
+}
+
+.results-name {
+  font-size: 36px;
+  text-align: left;
 }
