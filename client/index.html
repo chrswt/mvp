@@ -37,7 +37,8 @@
 
 
     <div class="auth-container" ng-controller="authController">
-      <button ng-controller="searchController" class="btn btn-primary btn-lg outline analyze" ng-show="user" ng-click="analyzeRatings(user)">Analyze</button>
+      <button ng-controller="searchController" class="btn btn-primary btn-lg outline analyze" ng-show="user" ng-click="analyzeRatings(user)"><i class="fa fa-bar-chart fa-lg" aria-hidden="true"></i>
+      Analyze</button>
       <a ui-sref="register">
         <button class="btn btn-primary btn-lg outline register" ng-show="!user">Register</button>
       </a>
@@ -61,6 +62,8 @@
 
 
       <form ng-submit="findInstances(searchField)">
+        <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+
         <input type="text" class="search" ng-model="searchField" placeholder="Search for your favorite restaurants/hotels/businesses..." />
         <button class="btn btn-primary btn-lg outline">Search</button>
       </form>

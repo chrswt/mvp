@@ -10,4 +10,3 @@ module.exports = function(app) {
   app.post('/api/submitrating', rating.submit);
   app.get('/api/analyze', rating.check);
 };
-

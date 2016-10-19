@@ -196,7 +196,7 @@ angular.module('rex', [
         '<div class="results-name" ng-if="$index === 0">{{$parent.candidateName}}' + 
           '<jk-rating-stars max-rating="5" on-rating="submitRating(rating)" ></jk-rating-stars></div>' +
           '<div class="rating-site">' +
-            '<div class="rate">{{key}}</div>' +
+            '<div class="rate"><i class="fa fa-{{key}} fa-lg" aria-hidden="true"></i>{{key}}</div>' +
             '<div class="rate">{{value}}</div>' +
           '</div>' +
         '</div>'
@@ -208,4 +208,3 @@ angular.module('rex', [
     templateUrl: '/templates/analysis-results.html'
   };
 })
-

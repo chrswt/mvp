@@ -34,11 +34,7 @@ exports.check = function(req, res) {
       tripadvisorRatings.push(+instance.tripadvisor || null);
       gogobotRatings.push(+instance.gogobot || null);
     });
-
-    console.log(userRatings);
-    console.log(yelpRatings);
-    console.log(foursquareRatings);
-
+    
     // Calculating yelp similarity
     absDiff = 0;
     count = 0;
