@@ -51,7 +51,7 @@ exports.check = function(req, res) {
     });
 
     yelpDiff = 1 - (absDiff / count);
-    analyzedResults.yelp = yelpDiff;
+    analyzedResults.yelp = parseFloat(yelpDiff).toFixed(2);
 
     // Calculating foursquare similarity
     absDiff = 0;
@@ -65,7 +65,7 @@ exports.check = function(req, res) {
     });
 
     foursquareDiff = 1 - (absDiff / count);
-    analyzedResults.foursquare = foursquareDiff;
+    analyzedResults.foursquare = parseFloat(foursquareDiff).toFixed(2);;
 
     // Calculating urbanspoon similarity
     absDiff = 0;
@@ -79,7 +79,7 @@ exports.check = function(req, res) {
     });
 
     urbanspoonDiff = 1 - (absDiff / count);
-    analyzedResults.urbanspoon = urbanspoonDiff
+    analyzedResults.urbanspoon = parseFloat(urbanspoonDiff).toFixed(2);
 
     // Calculating tripadvisor similarity
     tripadvisorRatings.forEach(function(rating, i) {
@@ -90,7 +90,7 @@ exports.check = function(req, res) {
     });
 
     tripadvisorDiff = 1 - (absDiff / count);
-    analyzedResults.tripadvisor = tripadvisorDiff;
+    analyzedResults.tripadvisor = parseFloat(tripadvisorDiff).toFixed(2);;
 
     // Calculating gogobot similarity
     gogobotRatings.forEach(function(rating, i) {
@@ -101,7 +101,7 @@ exports.check = function(req, res) {
     });
 
     gogobotDiff = 1 - (absDiff / count);
-    analyzedResults.gogobot = gogobotDiff;
+    analyzedResults.gogobot = parseFloat(gogobotDiff).toFixed(2);;
 
     console.log(analyzedResults);
 

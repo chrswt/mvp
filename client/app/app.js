@@ -4,7 +4,7 @@ angular.module('rex', [
   'ngAnimate',
   'ui.router',
   'jkAngularRatingStars',
-  'angularCharts'
+  'zingchart-angularjs'
 ])
 
 .config(function($stateProvider) {
@@ -108,43 +108,37 @@ angular.module('rex', [
     Rating.analyze(username)
     .then(function(result) {
       $rootScope.analysis = result;
-      console.log($rootScope.analysis);
+      $scope.myJson = {
+        type: 'hbar',
+        backgroundColor: "rgba(0,0,0,0)",
+        'scale-x': {
+          labels: ['Yelp', 'Foursquare', 'TripAdvisor', 'GogoBot', 'UrbanSpoon']
+        },
+        series: [
+          { 
+          values: [ // TODO fix responsiveness
+          $rootScope.analysis.yelp,
+          $rootScope.analysis.foursquare,
+          $rootScope.analysis.tripadvisor,
+          $rootScope.analysis.gogobot,
+          $rootScope.analysis.urbanspoon
+          ]},
+        ]
+      };
     });
   };
+
+  $scope.myJson = {
+    type: 'hbar',
+    backgroundColor: "rgba(0,0,0,0)",
+    'scale-x': {
+      labels: ['Yelp', 'Foursquare', 'TripAdvisor', 'GogoBot', 'UrbanSpoon']
+    },
+    series: [
+      { values: [ 0.714, 0.281, 0.414, 0.393, 0.900] }
+    ]
+  };
 })
-
-//   $scope.config = {
-//       title: 'Products',
-//       tooltips: true,
-//       labels: false,
-//       mouseover: function() {},
-//       mouseout: function() {},
-//       click: function() {},
-//       legend: {
-//         display: true,
-//         //could be 'left, right'
-//         position: 'right'
-//       }
-//     };
-
-//   $scope.data = {
-//     series: ['Sales', 'Income', 'Expense', 'Laptops', 'Keyboards'],
-//     data: [{
-//       x: "Laptops",
-//       y: [100, 500, 0],
-//       tooltip: "this is tooltip"
-//     }, {
-//       x: "Desktops",
-//       y: [300, 100, 100]
-//     }, {
-//       x: "Mobiles",
-//       y: [351]
-//     }, {
-//       x: "Tablets",
-//       y: [54, 0, 879]
-//     }]
-//   };
-// })
 
 .controller('authController', function($scope, $rootScope, Auth) {
   $rootScope.user;
@@ -211,11 +205,7 @@ angular.module('rex', [
 
 .directive('ngAnalysisResults', function() {
   return {
-    template:
-      '<div class="analysis-container">' +
-        '<div class="analysis-result">{{key}}</div>' +
-        '<div class="analysis-result">{{value}}</div>' + '</div>'
-      //   '<div data-ac-chart="\'bar\'"data-ac-data="data"data-ac-config="config" class="chart"></div>' +
-      // '</div>'
+    templateUrl: '/templates/analysis-results.html'
   };
 })
+

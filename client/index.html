@@ -24,15 +24,17 @@
     <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
     <script src="lib/angular-jk-rating-stars/dist/jk-rating-stars.js"></script>
 
+    <script src="lib/ZingChart-AngularJS-master/src/zingchart-angularjs.js"></script>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
 
-    <script data-require="d3@*" data-semver="3.3.11" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.11/d3.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/chinmaymk/angular-charts/bower/dist/angular-charts.min.js"></script>
+
   </head>
 
 
 
 
   <body ng-app="rex">
+
 
     <div class="auth-container" ng-controller="authController">
       <button ng-controller="searchController" class="btn btn-primary btn-lg outline analyze" ng-show="user" ng-click="analyzeRatings(user)">Analyze</button>
@@ -54,7 +56,10 @@
 
     <h1 class="title">rex</h1>
  
+
     <div class ="col-6" ng-controller="searchController">
+
+
       <form ng-submit="findInstances(searchField)">
         <input type="text" class="search" ng-model="searchField" placeholder="Search for your favorite restaurants/hotels/businesses..." />
         <button class="btn btn-primary btn-lg outline">Search</button>
